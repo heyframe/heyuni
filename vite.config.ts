@@ -4,9 +4,8 @@ import * as path from "node:path";
 
 export default ({ command, mode }) => {
 
-    const env = loadEnv(mode, path.resolve(process.cwd(), 'env'))
+    const env = loadEnv(mode, path.resolve(process.cwd()))
     return defineConfig({
-        envDir: './env',
         plugins:[
             uni(),
         ],

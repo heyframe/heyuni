@@ -23,7 +23,6 @@ Application.setViewAdapter(adapter);
 
 // Add pre-initializers to application
 Object.keys(preInitializer).forEach((key) => {
-    // @ts-expect-error
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const initializer = preInitializer[key];
     // @ts-expect-error
@@ -33,7 +32,6 @@ Object.keys(preInitializer).forEach((key) => {
 
 // Add initializers to application
 Object.keys(initializers).forEach((key) => {
-    // @ts-expect-error
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const initializer = initializers[key];
     // @ts-expect-error
@@ -43,7 +41,6 @@ Object.keys(initializers).forEach((key) => {
 
 // Add post-initializers to application
 Object.keys(postInitializer).forEach((key) => {
-    // @ts-expect-error
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const initializer = postInitializer[key];
 

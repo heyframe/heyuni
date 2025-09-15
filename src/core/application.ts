@@ -128,7 +128,6 @@ class ApplicationBootstrapper {
         // @ts-expect-error
         // eslint-disable-next-line @typescript-eslint/no-unsafe-call
         initializerStrings.forEach((serviceKey: string) => {
-            // @ts-expect-error
             // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
             const service = initContainer[serviceKey];
 
@@ -249,7 +248,6 @@ class ApplicationBootstrapper {
         name: S,
         provider: (serviceContainer: ServiceContainer) => ServiceContainer[S],
     ): ApplicationBootstrapper {
-        // @ts-expect-error
         this.$container.factory(`service.${name}`, provider.bind(this));
         return this;
     }

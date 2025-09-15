@@ -15,7 +15,7 @@ const title = ref('Hello')
 
 
 let loginService = HeyUni.Service('accountService') as AccountService;
-loginService.loginByEmail('dddd@qq.com','11111111');
+loginService.loginByEmail('test@test.com','heyframe');
 
 </script>
 

@@ -20,7 +20,7 @@ export default async function initializeApiServices() {
 
         const apiServiceFactory = factoryContainer.apiService;
         // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-assignment
-        const service = new ApiService();
+        const service = new ApiService(initContainer.httpClient);
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         const serviceName = service.name as keyof ServiceContainer;
         // eslint-disable-next-line @typescript-eslint/no-unsafe-argument

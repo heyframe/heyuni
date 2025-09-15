@@ -1,6 +1,3 @@
-/**
- * @sw-package framework
- */
 
 // eslint-disable-next-line sw-deprecation-rules/private-feature-declarations, @typescript-eslint/no-explicit-any
 export default () => {

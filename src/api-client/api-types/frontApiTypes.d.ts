@@ -1,8 +1,8 @@
 /**
  * This file is auto-generated. Do not make direct changes to the file.
- * Instead override it in your shopware.d.ts file.
+ * Instead override it in your heyframe.d.ts file.
  *
- * Shopware API version: 6.7.1.0
+ * Shopware API version: unknown
  *
  */
 type GenericRecord =
@@ -16,10 +16,6 @@ type GenericRecord =
     };
 export type components = {
   schemas: Schemas;
-  parameters: {
-    accept: string;
-    contentType: string;
-  };
 };
 export type Schemas = {
   AbstractDynamicPageOpenedPayload: {
@@ -756,7 +752,7 @@ export type Schemas = {
   };
   BaseInteraction: {
     /**
-     * The time in seconds how long the interaction should be stored in the database
+     * The time in seconds how long the interaction should be frontd in the database
      * @default -1
      */
     lifeTimeInSeconds?: number;
@@ -1445,7 +1441,7 @@ export type Schemas = {
   };
   ContextMeasurementSystemInfo: {
     /**
-     * The measurement system used in the store. 'metric' for metric system, 'imperial' for imperial system.
+     * The measurement system used in the front. 'metric' for metric system, 'imperial' for imperial system.
      * @default metric
      * @enum {string}
      */
@@ -1643,7 +1639,7 @@ export type Schemas = {
     associations?: components["schemas"]["Associations"];
     /** Fields which should be returned in the search result. */
     fields?: string[];
-    /** List of filters to restrict the search result. For more information, see [Search Queries > Filter](https://shopware.stoplight.io/docs/store-api/docs/concepts/search-queries.md#filter) */
+    /** List of filters to restrict the search result. For more information, see [Search Queries > Filter](https://heyframe.stoplight.io/docs/front-api/docs/concepts/search-queries.md#filter) */
     filter?: (
       | components["schemas"]["SimpleFilter"]
       | components["schemas"]["EqualsFilter"]
@@ -1659,7 +1655,7 @@ export type Schemas = {
     limit?: number;
     /** Search result page */
     page?: number;
-    /** Filters that applied without affecting aggregations. For more information, see [Search Queries > Post Filter](https://shopware.stoplight.io/docs/store-api/docs/concepts/search-queries.md#post-filter) */
+    /** Filters that applied without affecting aggregations. For more information, see [Search Queries > Post Filter](https://heyframe.stoplight.io/docs/front-api/docs/concepts/search-queries.md#post-filter) */
     "post-filter"?: (
       | components["schemas"]["SimpleFilter"]
       | components["schemas"]["EqualsFilter"]
@@ -2932,7 +2928,7 @@ export type Schemas = {
   };
   MeasurementUnits: {
     /**
-     * The measurement system used in the store. 'metric' for metric system, 'imperial' for imperial system.
+     * The measurement system used in the front. 'metric' for metric system, 'imperial' for imperial system.
      * @default metric
      * @enum {string}
      */
@@ -3113,7 +3109,7 @@ export type Schemas = {
   NoneFieldsCriteria: {
     aggregations?: components["schemas"]["Aggregation"][];
     associations?: components["schemas"]["Associations"];
-    /** List of filters to restrict the search result. For more information, see [Search Queries > Filter](https://shopware.stoplight.io/docs/store-api/docs/concepts/search-queries.md#filter) */
+    /** List of filters to restrict the search result. For more information, see [Search Queries > Filter](https://heyframe.stoplight.io/docs/front-api/docs/concepts/search-queries.md#filter) */
     filter?: (
       | components["schemas"]["SimpleFilter"]
       | components["schemas"]["EqualsFilter"]
@@ -3129,7 +3125,7 @@ export type Schemas = {
     limit?: number;
     /** Search result page */
     page?: number;
-    /** Filters that applied without affecting aggregations. For more information, see [Search Queries > Post Filter](https://shopware.stoplight.io/docs/store-api/docs/concepts/search-queries.md#post-filter) */
+    /** Filters that applied without affecting aggregations. For more information, see [Search Queries > Post Filter](https://heyframe.stoplight.io/docs/front-api/docs/concepts/search-queries.md#post-filter) */
     "post-filter"?: (
       | components["schemas"]["SimpleFilter"]
       | components["schemas"]["EqualsFilter"]
@@ -6056,7 +6052,7 @@ export type Schemas = {
     };
     itemRounding: {
       /** @enum {string} */
-      apiAlias: "shopware_core_framework_data_abstraction_layer_pricing_cash_rounding_config";
+      apiAlias: "heyframe_core_framework_data_abstraction_layer_pricing_cash_rounding_config";
       /** Format: int32 */
       decimals: number;
       /** Format: float */
@@ -6087,7 +6083,7 @@ export type Schemas = {
     token?: string;
     totalRounding: {
       /** @enum {string} */
-      apiAlias: "shopware_core_framework_data_abstraction_layer_pricing_cash_rounding_config";
+      apiAlias: "heyframe_core_framework_data_abstraction_layer_pricing_cash_rounding_config";
       /** Format: int32 */
       decimals: number;
       /** Format: float */
@@ -9046,8 +9042,8 @@ export type Schemas = {
     experience_context: components["schemas"]["paypal_v2_order_payment_source_common_experience_context"];
     last_digits: string;
     name: string;
-    stored_credential:
-      | components["schemas"]["paypal_v2_order_payment_source_card_stored_credential"]
+    frontd_credential:
+      | components["schemas"]["paypal_v2_order_payment_source_card_frontd_credential"]
       | null;
     type: string;
     vault_id: string;
@@ -9062,7 +9058,7 @@ export type Schemas = {
     authentication_status: string;
     enrollment_status: string;
   };
-  paypal_v2_order_payment_source_card_stored_credential: {
+  paypal_v2_order_payment_source_card_frontd_credential: {
     /** @enum {string} */
     payment_initiator: "MERCHANT" | "CUSTOMER";
     /** @enum {string} */
@@ -9088,7 +9084,7 @@ export type Schemas = {
     links: components["schemas"]["paypal_v2_common_link"][];
     permit_multiple_payment_tokens: boolean;
     status: string;
-    store_in_vault: string;
+    front_in_vault: string;
     usage_type: string;
   };
   paypal_v2_order_payment_source_common_attributes_verification: {
@@ -9203,10 +9199,10 @@ export type Schemas = {
   paypal_v2_order_payment_source_token: {
     experience_context: components["schemas"]["paypal_v2_order_payment_source_common_experience_context"];
     id: string;
-    stored_payment_source: components["schemas"]["paypal_v2_order_payment_source_token_stored_payment_source"];
+    frontd_payment_source: components["schemas"]["paypal_v2_order_payment_source_token_frontd_payment_source"];
     type: string;
   };
-  paypal_v2_order_payment_source_token_stored_payment_source: {
+  paypal_v2_order_payment_source_token_frontd_payment_source: {
     payment_initiator: string;
     payment_type: string;
     usage: string;
@@ -9802,8 +9798,8 @@ export type operations = {
     body: {
       /** E-Mail address to identify the customer */
       email: string;
-      /** URL of the storefront to use for the generated reset link. It has to be a domain that is configured in the sales channel domain settings. */
-      storefrontUrl: string;
+      /** URL of the frontfront to use for the generated reset link. It has to be a domain that is configured in the sales channel domain settings. */
+      frontfrontUrl: string;
     };
     response: components["schemas"]["SuccessResponse"];
     responseCode: 200;
@@ -9828,7 +9824,7 @@ export type operations = {
     body: {
       /** Flag indicating accepted data protection */
       acceptedDataProtection: boolean;
-      /** Field can be used to store an affiliate tracking code */
+      /** Field can be used to front an affiliate tracking code */
       affiliateCode?: string;
       billingAddress: components["schemas"]["CustomerAddress"];
       /** Birthday day */
@@ -9837,7 +9833,7 @@ export type operations = {
       birthdayMonth?: number;
       /** Birthday year */
       birthdayYear?: number;
-      /** Field can be used to store a campaign tracking code */
+      /** Field can be used to front a campaign tracking code */
       campaignCode?: string;
       /** Email of the customer. Has to be unique, unless `guest` is `true` */
       email: string;
@@ -9855,8 +9851,8 @@ export type operations = {
       /** Id of the salutation for the customer account. Fetch options using `salutation` endpoint. */
       salutationId?: string;
       shippingAddress?: components["schemas"]["CustomerAddress"];
-      /** URL of the storefront for that registration. Used in confirmation emails. Has to be one of the configured domains of the sales channel. */
-      storefrontUrl: string;
+      /** URL of the frontfront for that registration. Used in confirmation emails. Has to be one of the configured domains of the sales channel. */
+      frontfrontUrl: string;
       /** (Academic) title of the customer */
       title?: string;
     } & (
@@ -10783,8 +10779,8 @@ export type operations = {
       id: string;
     };
     body: {
-      /** URL of the storefront domain */
-      storefrontUrl?: string;
+      /** URL of the frontfront domain */
+      frontfrontUrl?: string;
     };
     response: components["schemas"]["B2bEmployee"];
     responseCode: 200;
@@ -10906,8 +10902,8 @@ export type operations = {
       option: string;
       /** Identifier of the salutation. */
       salutationId?: string;
-      /** Url of the storefront of the shop. This will be used for generating the link to the /newsletter/confirm inside the confirm email. */
-      storefrontUrl: string;
+      /** Url of the frontfront of the shop. This will be used for generating the link to the /newsletter/confirm inside the confirm email. */
+      frontfrontUrl: string;
       /** Street */
       street?: string;
       /** Zip code */

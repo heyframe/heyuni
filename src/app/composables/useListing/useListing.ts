@@ -1,5 +1,4 @@
 import {Schemas} from "@heyframe/uni-api-client/api-types/frontApiTypes";
-import {operations} from "@/api-client/api-types/adminApiTypes";
 import {useHeyFrameContext} from "@/app/composables/useHeyFrameContext/useHeyFrameContext";
 
 function isObject<T>(item: T): boolean {

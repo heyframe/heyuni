@@ -5,7 +5,8 @@
     "lib": ["esnext", "dom"],
     "baseUrl": ".",
     "module": "ESNext",
-    "moduleResolution": "Node",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
     "paths": {
       "@/*": ["./src/*"],
       "@img/*": ["./src/static/*"]
@@ -33,7 +34,8 @@
     "src/**/*.tsx",
     "src/**/*.jsx",
     "src/**/*.vue",
-    "src/**/*.json"
+    "src/**/*.json",
+    "node_modules"
   ],
   "exclude": ["node_modules"]
 }

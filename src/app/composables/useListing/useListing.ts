@@ -1,9 +1,14 @@
 import {Schemas} from "@heyframe/uni-api-client/api-types/frontApiTypes";
 import {useHeyFrameContext} from "@/app/composables/useHeyFrameContext/useHeyFrameContext";
+import {operations} from "@/api-client/api-types/frontApiTypes";
+import {useCategory} from "@/app/composables/useCategory/useCategory";
+import type {Ref} from "vue";
+import {inject, provide, ref,computed} from "vue";
 
 function isObject<T>(item: T): boolean {
   return item && typeof item === "object" && !Array.isArray(item);
 }
+
 function merge<T extends { [key in keyof T]: unknown }>(
   target: T,
   ...sources: T[]
@@ -18,10 +23,10 @@ function merge<T extends { [key in keyof T]: unknown }>(
   if (isObject(target) && isObject(source)) {
     for (const key in source) {
       if (isObject(source[key])) {
-        if (!target[key]) Object.assign(target, { [key]: {} });
+        if (!target[key]) Object.assign(target, {[key]: {}});
         merge(target[key], source[key]);
       } else {
-        Object.assign(target, { [key]: source[key] });
+        Object.assign(target, {[key]: source[key]});
       }
     }
   }
@@ -32,8 +37,7 @@ function merge<T extends { [key in keyof T]: unknown }>(
 export type ListingType = "productSearchListing" | "categoryListing";
 
 export type ShortcutFilterParam<
-  T extends
-    keyof Schemas["ProductListingCriteria"] = keyof Schemas["ProductListingCriteria"],
+  T extends keyof Schemas["ProductListingCriteria"] = keyof Schemas["ProductListingCriteria"],
 > = {
   code: T;
   value: Schemas["ProductListingCriteria"][T];
@@ -47,11 +51,123 @@ export type UseListingReturn = {}
 export function useListing(params?: {
   listingType: ListingType;
   categoryId?: string;
-}){
+  defaultSearchCriteria?: operations["searchPage post /search"]["body"];
+}) {
   const listingType = params?.listingType || "categoryListing";
   let categoryId = params?.categoryId || null;
 
-  const { apiClient } = useHeyFrameContext();
+  const {apiClient} = useHeyFrameContext();
 
+  let searchMethod: typeof listingType extends "productSearchListing"
+    ? (
+      searchParams: operations["readProductListing post /product-listing/{categoryId}"]["body"],
+    ) => Promise<Schemas["ProductListingResult"]>
+    : (
+      searchParams: operations["searchPage post /search"]["body"],
+    ) => Promise<Schemas["ProductListingResult"]>;
 
+  if (listingType === "productSearchListing") {
+    searchMethod = async (
+      searchCriteria: operations["searchPage post /search"]["body"],
+    ) => {
+      const {data} = await apiClient.invoke("searchPage post /search", {
+        headers: {
+          "sw-include-seo-urls": true,
+        },
+        body: searchCriteria,
+      });
+      return data;
+    };
+  } else {
+    if (!categoryId) {
+      const {category} = useCategory();
+      categoryId = category.value?.id;
+    }
+
+    searchMethod = async (
+      searchCriteria: operations["readProductListing post /product-listing/{categoryId}"]["body"],
+    ) => {
+      const {data} = await apiClient.invoke(
+        "readProductListing post /product-listing/{categoryId}",
+        {
+          headers: {
+            "sw-include-seo-urls": true,
+          },
+          pathParams: {
+            categoryId: categoryId as string, // null exception in useCategory,
+          },
+          body: searchCriteria,
+        },
+      );
+      return data;
+    };
+  }
+
+  return createListingComposable({
+    listingKey: listingType,
+    searchMethod,
+    searchDefaults:
+      params?.defaultSearchCriteria ||
+      ({} as operations["searchPage post /search"]["body"]), //getDefaults(),
+  });
+}
+
+export function createListingComposable({
+                                          searchMethod,
+                                          searchDefaults,
+                                          listingKey,
+                                        }: {
+  searchMethod(
+    searchParams:
+      | operations["readProductListing post /product-listing/{categoryId}"]["body"]
+      | operations["searchPage post /search"]["body"],
+  ): Promise<Schemas["ProductListingResult"]>;
+  searchDefaults: operations["searchPage post /search"]["body"];
+  listingKey: string;
+}) {
+  const loading = ref(false);
+
+  const _storeInitialListing = inject<
+    Ref<Schemas["ProductListingResult"] | null>
+  >(`useListingInitial-${listingKey}`, ref(null));
+  provide(`useListingInitial-${listingKey}`, _storeInitialListing);
+
+  const _storeAppliedListing = inject<
+    Ref<Schemas["ProductListingResult"] | null>
+  >(`useListingApplied-${listingKey}`, ref(null));
+  provide(`useListingApplied-${listingKey}`, _storeAppliedListing);
+
+  const getInitialListing = computed(() => _storeInitialListing.value);
+  const setInitialListing = async (
+    initialListing: Schemas["ProductListingResult"],
+  ) => {
+    _storeInitialListing.value = initialListing;
+    _storeAppliedListing.value = null;
+  };
+
+  async function search(
+    criteria: operations["searchPage post /search"]["body"],
+  ) {
+    loading.value = true;
+    try {
+      const searchCriteria = merge(
+        {} as operations["searchPage post /search"]["body"],
+        searchDefaults,
+        criteria,
+      );
+      _storeAppliedListing.value = await searchMethod(searchCriteria);
+    } finally {
+      loading.value = false;
+    }
+  }
+  const getCurrentListing = computed(() => {
+    return _storeAppliedListing.value || getInitialListing.value;
+  });
+  const getElements = computed(() => {
+    return getCurrentListing.value?.elements || [];
+  });
+  return{
+    search,
+    getElements
+  }
 }

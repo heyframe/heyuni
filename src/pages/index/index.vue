@@ -12,6 +12,7 @@ import {ref,onMounted} from 'vue'
 import HeyUni from "@/heyuni-instance";
 import AccountService from "@/core/service/api/account.service";
 import {useUser} from "@/app/composables/useUser/useUser";
+import {useListing} from "@/app/composables/useListing/useListing";
 
 const title = ref('Hello')
 
@@ -25,6 +26,24 @@ const userInfo = ref(null);
 onMounted(async () => {
   await userComposable.login({ username: 'test@test.com', password: 'heyframe' });
   userInfo.value = userComposable.user.value
+
+  const { search, getElements } = useListing({
+    listingType: "categoryListing",
+    categoryId: "77b959cf66de4c1590c7f9b7da3982f3", // entrypoint to browse
+    defaultSearchCriteria: { // set the default criteria
+      limit: 3,
+      p: 1,
+    },
+  });
+
+  search({ // invoke search() method
+    includes: { // omit this parameter if you want to use the whole product entity
+      product: ["id", "name", "cover", "calculatedPrice", "translated"],
+      product_media: ["media"],
+      media: ["url", "thumbnails"],
+    },
+  });
+
 });
 
 </script>

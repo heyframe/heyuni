@@ -14,7 +14,7 @@ export default function createLoginService(
     return {
         loginByEmail,
     }
-
+  console.log(3333)
     function loginByEmail(email: string, pass: string): Promise<void> {
         return httpClient.invoke("loginCustomer post /account/login", {
             body: {

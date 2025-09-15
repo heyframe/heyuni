@@ -1,7 +1,7 @@
 /**
  * @sw-package framework
  */
-import useContext from '@/app/composables/use-context';
+import useContext from '@/app/composables/useApiContext/use-context';
 import HeyUni from "@/heyuni-instance";
 
 const contextStore = HeyUni.Store.register('context', useContext);

@@ -1,4 +1,4 @@
-import { HeyUniInstance } from './core/heyuni';
+import { HeyUniInstance } from '@/core/heyuni';
 
 const HeyUni = HeyUniInstance;
 

@@ -11,11 +11,15 @@
 import { ref } from 'vue'
 import HeyUni from "@/heyuni-instance";
 import AccountService from "@/core/service/api/account.service";
+import {useUser} from "@/app/composables/useUser/useUser";
 const title = ref('Hello')
 
 
-let loginService = HeyUni.Service('accountService') as AccountService;
-loginService.loginByEmail('test@test.com','heyframe');
+// let loginService = HeyUni.Service('accountService') as AccountService;
+// loginService.loginByEmail('test@test.com','heyframe');
+
+let user = useUser();
+user.login({username:'test@test.com',password:'heyframe'})
 
 </script>
 

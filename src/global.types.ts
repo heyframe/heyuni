@@ -1,6 +1,5 @@
 import type {default as Bottle, Decorator} from 'bottlejs';
 import type ApiServiceFactory from '@/core/factory/api-service.factory';
-import type {LoginService} from "@/core/service/login.service";
 import AccountService from "@/core/service/api/account.service";
 
 export interface SubContainer<ContainerName extends string> {
@@ -60,7 +59,6 @@ declare global {
    */
     // eslint-disable-next-line @typescript-eslint/no-empty-interface
   interface ServiceContainer extends SubContainer<'service'> {
-    loginService: LoginService;
     accountService: AccountService;
   }
 

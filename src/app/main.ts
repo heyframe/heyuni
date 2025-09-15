@@ -4,7 +4,6 @@ import preInitializer from '@/app/init-pre';
 import postInitializer from '@/app/init-post';
 
 /** Services */
-import LoginService from '@/core/service/login.service';
 
 
 /** View Adapter */
@@ -48,14 +47,3 @@ Object.keys(postInitializer).forEach((key) => {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
     Application.addInitializer(key, initializer, '-post');
 });
-
-Application
-    .addServiceProvider('loginService', () => {
-        const serviceContainer = Application.getContainer('service');
-        const initContainer = Application.getContainer('init');
-
-        const loginService = LoginService(initContainer.httpClient, HeyUni.Context.api);
-
-
-        return loginService;
-    })

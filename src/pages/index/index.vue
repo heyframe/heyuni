@@ -9,12 +9,12 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import type {LoginService} from "@/core/service/login.service";
 import HeyUni from "@/heyuni-instance";
-const title = ref('Hello2')
+import AccountService from "@/core/service/api/account.service";
+const title = ref('Hello')
 
 
-let loginService = HeyUni.Service('loginService') as LoginService;
+let loginService = HeyUni.Service('accountService') as AccountService;
 loginService.loginByEmail('dddd@qq.com','11111111');
 
 </script>

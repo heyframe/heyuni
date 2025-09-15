@@ -1,25 +1,31 @@
 <template>
   <view class="content">
-    <image class="logo" src="/static/logo.png" />
+    <image class="logo" src="/static/logo.png"/>
     <view class="text-area">
-      <text class="title">{{ title }}</text>
+      <text class="title">{{ userInfo?.nickname }}</text>
     </view>
   </view>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import {ref,onMounted} from 'vue'
 import HeyUni from "@/heyuni-instance";
 import AccountService from "@/core/service/api/account.service";
 import {useUser} from "@/app/composables/useUser/useUser";
+
 const title = ref('Hello')
 
 
 // let loginService = HeyUni.Service('accountService') as AccountService;
 // loginService.loginByEmail('test@test.com','heyframe');
 
-let user = useUser();
-user.login({username:'test@test.com',password:'heyframe'})
+
+const userComposable = useUser();
+const userInfo = ref(null);
+onMounted(async () => {
+  await userComposable.login({ username: 'test@test.com', password: 'heyframe' });
+  userInfo.value = userComposable.user.value
+});
 
 </script>
 

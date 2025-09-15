@@ -1,4 +1,4 @@
-import useContext from '@/app/composables/useApiContext/use-context';
+import useApiContext from '@/app/composables/useApiContext/use-api-context';
 import HeyUni from "@/heyuni-instance";
 
 /**
@@ -10,7 +10,7 @@ import HeyUni from "@/heyuni-instance";
  * @type factory
  */
 export default function createContext(context = {}) {
-    const contextStore = useContext();
+    const contextStore = useApiContext();
 
     // assign unknown context information
     Object.entries(context).forEach(

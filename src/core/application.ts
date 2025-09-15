@@ -1,6 +1,6 @@
 import type Bottle from 'bottlejs';
 import type VueAdapter from "@/app/adapter/view/vue.adapter";
-import type {ContextStore} from "@/app/store/context.store";
+import type {ContextStore} from "@/app/store/api.context.store";
 import HeyUni from "@/heyuni-instance";
 
 class ApplicationBootstrapper {

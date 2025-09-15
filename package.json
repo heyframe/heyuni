@@ -35,17 +35,6 @@
     "build:quickapp-webview-union": "uni build -p quickapp-webview-union",
     "type-check": "vue-tsc --noEmit"
   },
-  "uni-app": {
-    "scripts": {
-      "dev": {
-        "title": "微信小程序",
-        "env": {
-          "VITE_API_BASE_URL": "https://your-api.com",
-          "VITE_API_ACCESS_TOKEN": "your-access-token"
-        }
-      }
-    }
-  },
   "dependencies": {
     "@dcloudio/uni-app": "3.0.0-4070620250821001",
     "@dcloudio/uni-app-harmony": "3.0.0-4070620250821001",

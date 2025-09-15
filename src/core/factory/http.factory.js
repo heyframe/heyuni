@@ -1,5 +1,5 @@
-import {createAPIClient} from "@heyframe/uni-api-client";
 import HeyUni from "@/heyuni-instance";
+import {createAPIClient} from "@/api-client";
 
 
 export default function createHTTPClient(context) {

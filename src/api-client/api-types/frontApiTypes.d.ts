@@ -324,7 +324,7 @@ export type Schemas = {
      */
     mode?: "guided" | "self";
     /** The name of the sales channel */
-    salesChannelName?: string;
+    channelName?: string;
     /**
      * The video and audio settings
      * @enum {string}
@@ -402,7 +402,7 @@ export type Schemas = {
     readonly createdAt?: string;
     id: string;
     organizationId: string;
-    salesChannelId: string;
+    channelId: string;
     /** Format: date-time */
     readonly updatedAt?: string;
   };
@@ -511,7 +511,7 @@ export type Schemas = {
       totalPrice: number;
     };
     reason?: string;
-    salesChannelId: string;
+    channelId: string;
     shippingMethod?: components["schemas"]["ShippingMethod"];
     shippingMethodId: string;
     stateId: string;
@@ -589,7 +589,7 @@ export type Schemas = {
     lineItems?: components["schemas"]["B2bComponentsShoppingListLineItem"][];
     name?: string;
     price?: components["schemas"]["Price"][];
-    salesChannelId: string;
+    channelId: string;
     /** Format: date-time */
     readonly updatedAt?: string;
     updatedById?: string;
@@ -669,7 +669,7 @@ export type Schemas = {
         };
       };
     };
-    salesChannelId: string;
+    channelId: string;
     /** Format: date-time */
     readonly updatedAt?: string;
     updatedById?: string;
@@ -1876,7 +1876,7 @@ export type Schemas = {
     readonly orderTotalAmount?: number;
     /** Format: int64 */
     readonly reviewCount?: number;
-    salesChannelId: string;
+    channelId: string;
     salutation?: components["schemas"]["Salutation"];
     salutationId?: string;
     readonly tagIds?: string[];
@@ -2107,13 +2107,13 @@ export type Schemas = {
     /** Format: date-time */
     readonly updatedAt?: string;
   };
-  DocumentBaseConfigSalesChannel: {
+  DocumentBaseConfigChannel: {
     /** Format: date-time */
     readonly createdAt?: string;
     documentBaseConfigId: string;
     documentTypeId?: string;
     id: string;
-    salesChannelId?: string;
+    channelId?: string;
     /** Format: date-time */
     readonly updatedAt?: string;
   };
@@ -2151,7 +2151,7 @@ export type Schemas = {
     isPreview?: boolean;
     name: string;
     presentationId: string;
-    salesChannelDomainId: string;
+    channelDomainId: string;
     /** Format: date-time */
     startedAt?: string;
     translated: {
@@ -2163,7 +2163,7 @@ export type Schemas = {
       guideUserId: string;
       name: string;
       presentationId: string;
-      salesChannelDomainId: string;
+      channelDomainId: string;
       startedAt: string;
       updatedById: string;
       videoAudioSettings: string;
@@ -2498,9 +2498,9 @@ export type Schemas = {
      */
     presentationGuideMode?: "self" | "guided";
     /** The id of the current sales channel */
-    salesChannelId?: string;
+    channelId?: string;
     /** The name of the current sales channel */
-    salesChannelName?: string;
+    channelName?: string;
     /** The video user id that attendee could use */
     videoUserId?: string | null;
   };
@@ -2877,7 +2877,7 @@ export type Schemas = {
     id: string;
     productId: string;
     productVersionId?: string;
-    salesChannelId: string;
+    channelId: string;
     /** Format: date-time */
     readonly updatedAt?: string;
   };
@@ -2889,7 +2889,7 @@ export type Schemas = {
     id: string;
     productId: string;
     productVersionId?: string;
-    salesChannelId: string;
+    channelId: string;
     /** Format: date-time */
     readonly updatedAt?: string;
   };
@@ -3154,7 +3154,7 @@ export type Schemas = {
     /** Format: date-time */
     readonly updatedAt?: string;
   };
-  NumberRangeSalesChannel: {
+  NumberRangeChannel: {
     /** Format: date-time */
     readonly createdAt?: string;
     id?: string;
@@ -3293,7 +3293,7 @@ export type Schemas = {
     primaryOrderTransaction?: components["schemas"]["OrderTransaction"];
     primaryOrderTransactionId?: string;
     primaryOrderTransactionVersionId?: string;
-    salesChannelId: string;
+    channelId: string;
     shippingCosts?: {
       calculatedTaxes?: GenericRecord;
       listPrice?: {
@@ -4010,8 +4010,8 @@ export type Schemas = {
       totalPrice: number;
     };
     reason?: string;
-    salesChannel?: GenericRecord | null;
-    salesChannelId?: string;
+    channel?: GenericRecord | null;
+    channelId?: string;
     shippingMethod?: components["schemas"]["ShippingMethod"];
     shippingMethodId?: string;
     stateId?: string;
@@ -5118,7 +5118,7 @@ export type Schemas = {
     points?: number;
     productId: string;
     productVersionId?: string;
-    salesChannelId: string;
+    channelId: string;
     status?: boolean;
     title: string;
     /** Format: date-time */
@@ -5130,12 +5130,12 @@ export type Schemas = {
     id: string;
     product?: components["schemas"]["Product"];
     productId: string;
-    salesChannel?: components["schemas"]["SalesChannel"];
-    salesChannelId: string;
+    channel?: components["schemas"]["Channel"];
+    channelId: string;
     summary?: string;
     translated: {
       productId: string;
-      salesChannelId: string;
+      channelId: string;
       summary: string;
     };
     /** Format: date-time */
@@ -5242,7 +5242,7 @@ export type Schemas = {
     /** Format: date-time */
     readonly updatedAt?: string;
   };
-  PromotionSalesChannel: {
+  PromotionChannel: {
     /** Format: date-time */
     readonly createdAt?: string;
     id?: string;
@@ -5374,7 +5374,7 @@ export type Schemas = {
       totalPrice: number;
     };
     quoteNumber?: string;
-    salesChannelId: string;
+    channelId: string;
     /** Format: date-time */
     sentAt?: string;
     shippingCosts?: {
@@ -5726,7 +5726,7 @@ export type Schemas = {
         };
       };
     };
-    salesChannelId: string;
+    channelId: string;
     /** Format: date-time */
     sentAt?: string;
     shippingCosts?: {
@@ -5950,7 +5950,7 @@ export type Schemas = {
     /** Format: date-time */
     readonly updatedAt?: string;
   };
-  SalesChannel: {
+  Channel: {
     active?: boolean;
     configuration?: GenericRecord;
     country?: components["schemas"]["Country"];
@@ -5961,12 +5961,12 @@ export type Schemas = {
     currencyId: string;
     customerGroupId: string;
     customFields?: GenericRecord;
-    domains?: components["schemas"]["SalesChannelDomain"][];
+    domains?: components["schemas"]["ChannelDomain"][];
     footerCategory?: components["schemas"]["Category"];
     footerCategoryId?: string;
     footerCategoryVersionId?: string;
     hreflangActive?: boolean;
-    hreflangDefaultDomain?: components["schemas"]["SalesChannelDomain"];
+    hreflangDefaultDomain?: components["schemas"]["ChannelDomain"];
     hreflangDefaultDomainId?: string;
     id: string;
     language?: components["schemas"]["Language"];
@@ -6011,14 +6011,14 @@ export type Schemas = {
     /** Format: date-time */
     readonly updatedAt?: string;
   };
-  SalesChannelAnalytics: {
+  ChannelAnalytics: {
     /** Format: date-time */
     readonly createdAt?: string;
     id?: string;
     /** Format: date-time */
     readonly updatedAt?: string;
   };
-  SalesChannelContext: {
+  ChannelContext: {
     /** @enum {string} */
     apiAlias: "sales_channel_context";
     /** Core context with general configuration values and state */
@@ -6030,7 +6030,7 @@ export type Schemas = {
       languageIdChain?: string[];
       scope?: string;
       source?: {
-        salesChannelId: string;
+        channelId: string;
         /** @enum {string} */
         type: "sales-channel" | "shop-api";
       };
@@ -6065,7 +6065,7 @@ export type Schemas = {
     };
     measurementSystem?: components["schemas"]["ContextMeasurementSystemInfo"];
     paymentMethod?: components["schemas"]["PaymentMethod"];
-    salesChannel: components["schemas"]["SalesChannel"];
+    channel: components["schemas"]["Channel"];
     shippingLocation?: {
       address?: components["schemas"]["CustomerAddress"];
       /** @enum {string} */
@@ -6091,7 +6091,7 @@ export type Schemas = {
       roundForNet: boolean;
     };
   };
-  SalesChannelDomain: {
+  ChannelDomain: {
     /** Format: date-time */
     readonly createdAt?: string;
     currency?: components["schemas"]["Currency"];
@@ -6102,14 +6102,14 @@ export type Schemas = {
     language?: components["schemas"]["Language"];
     languageId: string;
     measurementUnits?: components["schemas"]["MeasurementUnits"];
-    salesChannelDefaultHreflang?: components["schemas"]["SalesChannel"];
-    salesChannelId: string;
+    channelDefaultHreflang?: components["schemas"]["Channel"];
+    channelId: string;
     snippetSetId: string;
     /** Format: date-time */
     readonly updatedAt?: string;
     url: string;
   };
-  SalesChannelType: {
+  ChannelType: {
     /** Format: date-time */
     readonly createdAt?: string;
     id?: string;
@@ -6200,7 +6200,7 @@ export type Schemas = {
       | "frontend.navigation.page"
       | "frontend.landing.page"
       | "frontend.detail.page";
-    salesChannelId?: string;
+    channelId?: string;
     seoPathInfo: string;
     /** Format: date-time */
     readonly updatedAt?: string;
@@ -6221,7 +6221,7 @@ export type Schemas = {
     languageId: string;
     pathInfo: string;
     routeName: string;
-    salesChannelId?: string;
+    channelId?: string;
     seoPathInfo: string;
     /** Format: date-time */
     readonly updatedAt?: string;
@@ -6234,7 +6234,7 @@ export type Schemas = {
     customFields?: GenericRecord;
     id?: string;
     isValid?: boolean;
-    salesChannelId?: string;
+    channelId?: string;
     /** Format: date-time */
     readonly updatedAt?: string;
   };
@@ -6454,7 +6454,7 @@ export type Schemas = {
       ruleId?: string;
       shippingMethodId?: string;
     }[];
-    salesChannelDefaultAssignments?: {
+    channelDefaultAssignments?: {
       accessKey?: string;
       active?: boolean;
       countryId?: string;
@@ -6477,7 +6477,7 @@ export type Schemas = {
       shortName?: string;
       typeId?: string;
     }[];
-    salesChannels?: {
+    channels?: {
       accessKey?: string;
       active?: boolean;
       countryId?: string;
@@ -6767,7 +6767,7 @@ export type Schemas = {
     paymentMethodId: string;
     /** Format: int64 */
     remainingExecutionCount?: number;
-    salesChannelId: string;
+    channelId: string;
     shippingAddress?: components["schemas"]["SubscriptionAddress"];
     shippingAddressId: string;
     shippingMethod?: components["schemas"]["ShippingMethod"];
@@ -7715,21 +7715,21 @@ export type Schemas = {
     /** Format: date-time */
     readonly updatedAt?: string;
   };
-  SwagPaypalPosSalesChannel: {
+  SwagPaypalPosChannel: {
     /** Format: date-time */
     readonly createdAt?: string;
     id?: string;
     /** Format: date-time */
     readonly updatedAt?: string;
   };
-  SwagPaypalPosSalesChannelRun: {
+  SwagPaypalPosChannelRun: {
     /** Format: date-time */
     readonly createdAt?: string;
     id?: string;
     /** Format: date-time */
     readonly updatedAt?: string;
   };
-  SwagPaypalPosSalesChannelRunLog: {
+  SwagPaypalPosChannelRunLog: {
     /** Format: date-time */
     readonly createdAt?: string;
     id?: string;
@@ -7781,7 +7781,7 @@ export type Schemas = {
     /** Format: date-time */
     readonly updatedAt?: string;
   };
-  SwagSocialShoppingSalesChannel: {
+  SwagSocialShoppingChannel: {
     /** Format: date-time */
     readonly createdAt?: string;
     id?: string;
@@ -7796,8 +7796,8 @@ export type Schemas = {
     /** Format: date-time */
     readonly createdAt?: string;
     id: string;
-    salesChannel?: components["schemas"]["SalesChannel"];
-    salesChannelId?: string;
+    channel?: components["schemas"]["Channel"];
+    channelId?: string;
     /** Format: date-time */
     readonly updatedAt?: string;
   };
@@ -7999,7 +7999,7 @@ export type Schemas = {
     products: components["schemas"]["ProductListingResult"];
     wishlist?: {
       customerId?: string;
-      salesChannelId?: string;
+      channelId?: string;
     };
   };
   attributes: {
@@ -10254,7 +10254,7 @@ export type operations = {
   "readContext get /context": {
     contentType?: "application/json";
     accept?: "application/json";
-    response: components["schemas"]["SalesChannelContext"];
+    response: components["schemas"]["ChannelContext"];
     responseCode: 200;
   };
   "updateContext patch /context": {

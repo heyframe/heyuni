@@ -3365,9 +3365,9 @@ export type Schemas = {
     customerNumber?: string;
     customFields?: GenericRecord;
     email: string;
-    firstName: string;
+    name?: string;
     id: string;
-    lastName: string;
+    nickname: string;
     salutation?: components["schemas"]["Salutation"];
     salutationId?: string;
     title?: string;

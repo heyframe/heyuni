@@ -1,8 +1,8 @@
 import {ComputedRef, Ref,computed} from "vue";
-import {Schemas} from "@heyframe/uni-api-client/api-types/frontApiTypes";
 import useApiContext from "@/app/composables/useApiContext/use-api-context";
 import ContextError from "@/app/composables/helpers/ContextError";
 import {useContext} from "@/app/composables/useContext/useContext";
+import {Schemas} from "@/api-client/api-types/frontApiTypes";
 
 export type UseCategoryReturn = {
   /**

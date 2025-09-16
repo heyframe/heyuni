@@ -1,11 +1,11 @@
 import defu from "defu";
 import { createHooks } from "hookable";
 import type { operations } from "@/api-client/api-types/adminApiTypes";
-import type { InvokeParameters } from "./createAPIClient";
-import type { GlobalFetchOptions } from "./createAPIClient";
-import { type ClientHeaders, createHeaders } from "./defaultHeaders";
-import { errorInterceptor } from "./errorInterceptor";
-import { createPathWithParams } from "./transformPathToQuery";
+import type { InvokeParameters } from "@/api-client/createAPIClient";
+import type { GlobalFetchOptions } from "@/api-client/createAPIClient";
+import { type ClientHeaders, createHeaders } from "@/api-client/defaultHeaders";
+import { errorInterceptor } from "@/api-client/errorInterceptor";
+import { createPathWithParams } from "@/api-client/transformPathToQuery";
 
 type SimpleUnionOmit<T, K extends string | number | symbol> = T extends unknown
     ? Omit<T, K>

@@ -2,7 +2,6 @@ import {computed} from "vue";
 import type {ComputedRef, Ref} from "vue";
 import type {Schemas} from "@//api-client/api-types/frontApiTypes";
 import ContextError from "@/app/composables/helpers/ContextError";
-import useApiContext from "@/app/composables/useApiContext/use-api-context";
 import {useContext} from "@/app/composables/useContext/useContext";
 
 export type UseProductReturn = {

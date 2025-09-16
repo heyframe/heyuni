@@ -1,5 +1,5 @@
-import type {ApiError} from "./ApiError";
-import {ApiClientError} from "./ApiError";
+import type {ApiError} from "@/api-client/ApiError";
+import {ApiClientError} from "@/api-client/ApiError";
 
 export function errorInterceptor<T extends { errors: Array<ApiError> }>(
     response: UniApp.RequestSuccessCallbackResult | UniApp.GeneralCallbackResult

@@ -1,6 +1,6 @@
 import path from 'node:path'
 import process from 'node:process'
-import { defineManifestConfig } from './build/vite-plugins/uni-manifest-plugin'
+import { defineManifestConfig } from './vite/vite-plugins/uni-manifest-plugin'
 import { loadEnv } from 'vite'
 
 function getMode() {
@@ -24,7 +24,6 @@ export default defineManifestConfig({
   'description': '',
   'versionName': '1.0.0',
   'versionCode': '100',
-  'transformPx': false,
   'locale': VITE_FALLBACK_LOCALE, // 'zh-Hans'
   'h5': {
     router: {

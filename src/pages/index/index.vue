@@ -1,10 +1,9 @@
 <template>
   <view class="content">
+    <nut-button type="info">信息按钮</nut-button>
     <view class="text-area">
       <text class="title">{{ userInfo?.nickname }}</text>
     </view>
-    <uni-badge text="1"></uni-badge>
-
     <view class="product-list">
       <view
         class="product-item"
@@ -25,7 +24,6 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import { useUser } from "@/app/composables/useUser/useUser";
-import uniBadge from '@dcloudio/uni-ui/lib/uni-badge/uni-badge.vue';
 import {useListing} from "@/app/composables/useListing/useListing";
 
 const userComposable = useUser();
@@ -45,8 +43,6 @@ onMounted(async () => {
   // 登录用户
   await userComposable.login({ username: 'test@test.com', password: 'heyframe' });
   userInfo.value = userComposable.user.value;
-
-
 
   await search({ // invoke search() method
     includes: { // omit this parameter if you want to use the whole product entity
